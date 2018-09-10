@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="title">
+	Create Queries
+    </ui:define>
+	<ui:define name="application_name">
+    	Create Queries
+    </ui:define>
+	<ui:define name="content">
+		<h1>Search Users</h1>
+		<br class="clear"/>
+		<h:form id="viewform">
+			<p class="input">
+				<h:outputLabel value="Name:" for="name" />
+				<h:inputText value="#{hello.name}" id="name" required="true" requiredMessage="Name is required"/>
+			</p>
+			<br class="clear"/>
+			<br class="clear"/>
+			<p class="input">
+			    <h:commandButton action="#{hello.search}"  value="Submit" styleClass="btn" />
+			</p>
+
+				<h:outputLabel value="Results:"/><br/>
+				<br class="clear"/>
+				<ul>
+					<ui:repeat value="#{hello.results}" var="person">
+						<li>
+							<h:outputText value="#{person.id} -- #{person.name}"/>
+
+							<br/>
+
+						</li>
+					</ui:repeat>
+				</ul>
+			<a href="/create-queries/index.xhtml">Back</a>
+			</h:form>
+	</ui:define>
+</ui:composition>

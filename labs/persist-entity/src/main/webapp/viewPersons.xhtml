@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="title">
+	All who said hello
+    </ui:define>
+	<ui:define name="application_name">
+    	Say Hello
+    </ui:define>
+	<ui:define name="content">
+		<h1>These people said hello</h1>
+		<br class="clear"/>
+		<h:form id="viewform">
+			
+				<h:outputLabel value="Persons:"/>
+				<br class="clear"/>
+				<ul>
+					<ui:repeat value="#{hello.persons}" var="person">
+						<li>
+							<strong>Name:</strong><h:outputText value="#{person.personName}"/><br/>
+							
+						</li>
+					</ui:repeat>
+				</ul>
+			<a href="/persist-entity/index.xhtml">Back</a>
+			</h:form>
+	</ui:define>
+</ui:composition>

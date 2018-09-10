@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="title">
+	Create Queries
+    </ui:define>
+	<ui:define name="application_name">
+    	Create Queries
+    </ui:define>
+	<ui:define name="content">
+		<h1>User Log</h1>
+		<br class="clear"/>
+		<h:form id="viewform">
+
+				<h:outputLabel value="Users:"/>
+				<br class="clear"/>
+				<ul>
+					<ui:repeat value="#{hello.persons}" var="person">
+						<li>
+							<h:outputText value="#{person.id} -- #{person.name}"/><br/>
+
+						</li>
+					</ui:repeat>
+				</ul>
+			<a href="/create-queries/index.xhtml">Back</a>
+			</h:form>
+	</ui:define>
+</ui:composition>

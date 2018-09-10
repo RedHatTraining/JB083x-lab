@@ -1,0 +1,79 @@
+body {
+	
+}
+
+header {
+	background-color: #C40016;
+	height: 150px;
+	padding: 10px;
+	width: 95%;
+	margin: 0 auto;
+	border: 4px solid #000000;
+}
+
+header .right {
+	display: inline-block;
+	float: right;
+	font-size: 40px;
+	font-weight: bolder;
+	height: 150px;
+	padding: 48px;
+	vertical-align: middle;
+}
+
+#content {
+	background-color: #F2F2F2;
+	width: 91%;
+	margin: 0 auto;
+	padding: 100px 50px;
+	border: 2px solid #000000;
+}
+
+footer {
+	border: 4px solid #000000;
+	background-color: #C40016;
+	height: 30px;
+	padding: 10px;
+	width: 95%;
+	margin: 0 auto;
+	text-align: center;
+	font-weight: bolder;
+	font-size: 27px;
+}
+
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 165px;
+}
+input {
+  display: inline-block;
+  float: left;
+  width: 362px;
+}
+select{
+	display: inline-block;
+  	float: left;
+  	width: 371px;
+}
+textarea{
+	display: inline-block;
+  	float: left;
+}
+
+.clear{
+	clear: both;
+}
+
+.messages{
+	color: green;
+	font-weight: bolder;
+}
+
+.btn{
+	display: inline-block;
+    float: left;
+    clear: left;
+    width: 165px;
+}
