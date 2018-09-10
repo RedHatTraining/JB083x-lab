@@ -1,0 +1,137 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>stateless-ejb-solution</artifactId>
+  <packaging>war</packaging>
+  <name>Stateless EJB web app Project</name>
+  <description>This is the Stateless EJB project</description>
+  <parent>
+  	<groupId>com.redhat.training</groupId>
+  	<artifactId>parent-pom</artifactId>
+  	<version>1.0</version>
+  	<relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+    <dependencies>
+
+        <!-- First declare the APIs we depend on and need for compilation. All
+            of them are provided by JBoss EAP -->
+
+        <!-- Import the CDI API, we use provided scope as the API is included in
+            JBoss EAP -->
+         <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Import the EJB API, we use provided scope as the API is included in
+            JBoss EAP -->
+        <dependency>
+            <groupId>org.jboss.spec.javax.ejb</groupId>
+            <artifactId>jboss-ejb-api_3.2_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+
+        <!-- Import the JSF API, we use provided scope as the API is included in
+            JBoss EAP -->
+        <dependency>
+            <groupId>org.jboss.spec.javax.faces</groupId>
+            <artifactId>jboss-jsf-api_2.2_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+
+         <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+    		<groupId>org.jboss.arquillian.junit</groupId>
+    		<artifactId>arquillian-junit-container</artifactId>
+    		<scope>test</scope>
+		</dependency>
+
+        <dependency>
+            <groupId>org.jboss.arquillian.protocol</groupId>
+            <artifactId>arquillian-protocol-servlet</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Need to explicitly reference this version, or else there will be an exception
+        due to a bug in Arquilian -->
+        <dependency>
+		    <groupId>org.wildfly.arquillian</groupId>
+		    <artifactId>wildfly-arquillian-common</artifactId>
+		    <version>2.0.0.Final</version>
+		</dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>stateless-ejb</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${version.war.plugin}</version>
+                <extensions>false</extensions>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <archive>
+                        <manifestEntries>
+                            <Dependencies>com.google.guava,org.slf4j
+                            </Dependencies>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <!-- This profile skips all tests, though you can tune
+                it to run just unit tests based on a custom pattern -->
+            <!-- Separate profiles are provided for running all tests, including
+                Arquillian tests that execute in the specified container -->
+           <!-- Use this profile if you just want to build a WAR file without running any unit tests -->
+           <!-- Run like this:  mvn clean package -Pdefault -->
+            <id>default</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${version.surefire.plugin}</version>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <!-- An optional Arquillian testing profile that
+                executes tests in a remote JBoss EAP instance -->
+            <!-- Run with: mvn clean test -Parq-wildfly-remote or, simply run: mvn test -->
+            <!-- To make it easy to run tests from within JBDS, this profile is set as active by default -->
+            <id>arq-wildfly-remote</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.wildfly.arquillian</groupId>
+                    <artifactId>wildfly-arquillian-container-remote</artifactId>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
+
+</project>
