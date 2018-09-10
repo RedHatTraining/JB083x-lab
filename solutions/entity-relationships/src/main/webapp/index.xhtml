@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="title">
+	Group View web app
+    </ui:define>
+	<ui:define name="application_name">
+    	Group View web app
+    </ui:define>
+	<ui:define name="content">
+		<h1>Group View web app</h1>
+		<br class="clear"/>
+		<h:form id="form">
+			<p class="input">
+				<h:outputLabel value="Select a Group:" for="group" />
+				<h:selectOneMenu id="group" value="#{groupView.currentGroup}" valueChangeListener="#{groupView.update}" onchange="submit()" converter="SelectItemToEntityConverter">
+					<f:selectItem itemLabel="Choose one ..." itemValue="#{null}"/>
+					<f:selectItems value="#{groupView.groups}" var="group" itemValue="#{group}" itemLabel="#{group.name}"/>
+				</h:selectOneMenu>
+			</p>
+			<br class="clear"/>
+			<br class="clear"/>
+			<p>
+				<br class="clear"/>
+				<br class="clear"/>
+				<h:outputLabel value="Employees:"/>
+				<br class="clear"/>
+				<ul>
+					<ui:repeat value="#{groupView.userList}" var="person">
+						<li>
+							<strong>Name:</strong><h:outputText value="#{person.name}"/><br/>
+							<strong>Email:</strong><h:outputText value="#{person.email.address}"/>
+						</li>
+					</ui:repeat>
+				</ul>
+			</p>
+		</h:form>
+	</ui:define>
+</ui:composition>
