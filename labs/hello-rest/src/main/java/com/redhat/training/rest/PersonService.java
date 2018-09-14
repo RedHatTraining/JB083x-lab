@@ -25,7 +25,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 
-import com.redhat.training.messaging.JMSUtil;
 import com.redhat.training.model.Person;
 
 //TODO Add the stateless annotation
@@ -45,9 +44,6 @@ public class PersonService {
 	@Resource
 	UserTransaction tx;
 
-	@Inject
-	JMSUtil jmsUtil;
-
 	// Simple non-RESTy method for JSF bean invocation
 	public String hello(String name) {
 		try {
@@ -66,9 +62,6 @@ public class PersonService {
 				Person p = new Person();
 				p.setName(name);
 				entityManager.persist(p);
-
-				// Send a JMS message to the 'helloWorldQueue'
-				jmsUtil.sendMessage("Said Hello to " + name.toUpperCase() + " at " + fdate);
 
 				// respond back with Hello and convert the name to UPPERCASE. Also, send the
 				// current time on the server.
