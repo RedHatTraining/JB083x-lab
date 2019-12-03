@@ -41,14 +41,14 @@ public class TestTodoMap {
 		// Display an todo record
 		case 'R':
 			System.out.println("Enter int value for item id: ");
-			id = new Integer(in.readLine().trim());
+			id = Integer.valueOf(in.readLine().trim());
 			todo.findItemTodo(id);
 			break;
 
 		// Mark an existing task as completed
 		case 'C':
 			System.out.println("Enter int value for item id: ");
-			id = new Integer(in.readLine().trim());
+			id = Integer.valueOf(in.readLine().trim());
 			todo.completeTodo(id);
 			break;
 
@@ -56,7 +56,7 @@ public class TestTodoMap {
 		// Delete an todo record
 		case 'D':
 			System.out.println("Enter int value for item id: ");
-			id = new Integer(in.readLine().trim());
+			id = Integer.valueOf(in.readLine().trim());
 			todo.deleteTodo(id);
 			System.out.println("Deleted item " + id);
 			break;

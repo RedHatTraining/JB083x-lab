@@ -34,7 +34,7 @@ public class TodoMap {
 				status = Status.PENDING.toString();
 
 			item.setStatus(status);
-			todoMap.put(new Integer(count), item);
+			todoMap.put(Integer.valueOf(count), item);
 			System.out.println("Do you want to add more items[Y/N]");
 			ans = scn.next().toUpperCase();
 
