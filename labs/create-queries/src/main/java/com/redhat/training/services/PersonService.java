@@ -18,6 +18,9 @@ public class PersonService {
 	private EntityManager entityManager;
 
 	// Get all Person objects in the Database
+  public List<Person> getAllPersons(){
+	  
+  }
 
   //Get persons whose name matches the name given in the query
 
