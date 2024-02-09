@@ -43,17 +43,17 @@ public class Hello {
 	}
 
     //view all persons whose name matches the name given in the query
-		/*public void search() {
-					results = personService.getPersonsWithName(name);
-	  }*/
+	public void search() {
+		results = personService.getPersonsWithName(name);
+	}
 
-		public List<Person> getResults() {
-						return results;
-		}
+	public List<Person> getResults() {
+					return results;
+	}
 
-		public void setResults(List<Person> results) {
-						this.results = results;
-		}
+	public void setResults(List<Person> results) {
+					this.results = results;
+	}
 
 
 
