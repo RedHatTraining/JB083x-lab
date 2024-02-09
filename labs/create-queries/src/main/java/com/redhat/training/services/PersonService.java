@@ -24,6 +24,14 @@ public class PersonService {
 	  
 	  return query.getResultList();
   }
+  
+  public List<Person> getPersonWithName(String name) {
+	  TypedQuery<Person> query = entityManager.createQuery("SELECT p FROM Person p"
+	  		+ "where p.name =:pname", Person.class);
+	  query.setParameter("pname", name);
+	  
+	  return query.getResultList();
+  }
 
   //Get persons whose name matches the name given in the query
 
