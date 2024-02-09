@@ -19,7 +19,10 @@ public class PersonService {
 
 	// Get all Person objects in the Database
   public List<Person> getAllPersons(){
+	  TypedQuery<Person> query = entityManager.createQuery("SELECT p FROM Person p",
+			  Person.class);
 	  
+	  return query.getResultList();
   }
 
   //Get persons whose name matches the name given in the query
