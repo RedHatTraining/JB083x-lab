@@ -25,7 +25,7 @@ public class PersonService {
 	  return query.getResultList();
   }
   
-  public List<Person> getPersonWithName(String name) {
+  public List<Person> getPersonsWithName(String name) {
 	  TypedQuery<Person> query = entityManager.createQuery("SELECT p FROM Person p"
 	  		+ "where p.name =:pname", Person.class);
 	  query.setParameter("pname", name);
